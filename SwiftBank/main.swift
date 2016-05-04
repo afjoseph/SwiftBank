@@ -2,8 +2,7 @@
 //  main.swift
 //  SwiftBank
 //
-//  Created by Mindvalley on 3/29/16.
-//  Copyright © 2016 Mindvalley. All rights reserved.
+//  Created by Abdullah Joseph on 3/29/16.
 //
 
 import Foundation
@@ -18,14 +17,14 @@ var currentUser: User?
 
 func enterUserMenu() {
     while true {
-        Utils.instance.clearScreen()
+        Utils.clearScreen()
         print(">>>>>>> USER MENU")
         print("1. View Account")
         print("2. Deposit Amount")
         print("3. Withdraw amount")
         print("0. Sign out")
     
-        let response_str = Utils.instance.readInput()
+        let response_str = Utils.readInput()
         let response = Int(response_str) ?? -1
         
         switch response {
@@ -52,7 +51,7 @@ func viewAccount() {
     }
     
     currentUser.outputDetails()
-    Utils.instance.pause()
+    Utils.pause()
 }
 
 func depositMoney() {
@@ -62,7 +61,7 @@ func depositMoney() {
             fatalError("currentUser is nil")
     }
     
-    let amount_str = Utils.instance.readInput("Amount to deposit: ")
+    let amount_str = Utils.readInput("Amount to deposit: ")
     guard let amount = Double(amount_str)
         where amount > 0
         else {
@@ -72,7 +71,7 @@ func depositMoney() {
     
     currentUser.deposit(amount)
     print("\(amount) depositied successfully")
-    Utils.instance.pause()
+    Utils.pause()
 }
 
 func withdrawMoney() {
@@ -82,7 +81,7 @@ func withdrawMoney() {
             fatalError("currentUser is nil")
     }
     
-    let amount_str = Utils.instance.readInput("Amount to withdraw: ")
+    let amount_str = Utils.readInput("Amount to withdraw: ")
     guard let amount = Double(amount_str)
         where amount > 0
         else {
@@ -96,15 +95,15 @@ func withdrawMoney() {
         print("Not enough balance")
     }
     
-    Utils.instance.pause()
+    Utils.pause()
 }
 
 func login() {
-    Utils.instance.clearScreen()
+    Utils.clearScreen()
     
     print(">>>>>>> LOGIN")
-    let username = Utils.instance.readInput("Username: ")
-    let password = Utils.instance.readInput("Password: ")
+    let username = Utils.readInput("Username: ")
+    let password = Utils.readInput("Password: ")
     
     var foundUser = false
     
@@ -122,34 +121,34 @@ func login() {
     }
     
     print("Access Granted!")
-    Utils.instance.pause()
+    Utils.pause()
     
     enterUserMenu()
 }
 
 func signup() {
-    Utils.instance.clearScreen()
+    Utils.clearScreen()
     
     print(">>>>>>> SIGNUP")
-    let username = Utils.instance.readInput("Username: ")
-    let password = Utils.instance.readInput("Password: ")
-    let name = Utils.instance.readInput("Name: ")
+    let username = Utils.readInput("Username: ")
+    let password = Utils.readInput("Password: ")
+    let name = Utils.readInput("Name: ")
     
     users.append(User(username: username, password: password, name: name)! )
     
     print("Signup successful")
-    Utils.instance.pause()
+    Utils.pause()
 }
 
 func main() {
-    while true {
-        Utils.instance.clearScreen()
+    repeat {
+        Utils.clearScreen()
         print("Welcome to Swift Bank")
         print("1. Login")
         print("2. Signup")
         print("0. Exit")
     
-        let response_str = Utils.instance.readInput()
+        let response_str = Utils.readInput()
         let response = Int(response_str) ?? -1
         
         switch response {
@@ -162,7 +161,7 @@ func main() {
         default:
             continue
         }
-    }
+    } while true
 }
 
 //____ENTRY_POINT_____

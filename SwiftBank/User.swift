@@ -2,8 +2,7 @@
 //  User.swift
 //  SwiftBank
 //
-//  Created by Mindvalley on 3/29/16.
-//  Copyright © 2016 Mindvalley. All rights reserved.
+//  Created by Abdullah Joseph on 3/29/16.
 //
 
 class User {

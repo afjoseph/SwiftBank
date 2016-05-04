@@ -2,19 +2,19 @@
 //  Utils.swift
 //  SwiftBank
 //
-//  Created by Mindvalley on 3/29/16.
-//  Copyright © 2016 Mindvalley. All rights reserved.
+//  Created by Abdullah Joseph on 3/29/16.
 //
 
 import Foundation
 
 class Utils {
-    static let instance = Utils()
+    //Make it a singleton with this
+//    static let instance = Utils()
  
-    func readInput(prompt:String = "> ") -> String {
+    static func readInput(prompt:String = "> ") -> String {
         print(prompt, terminator:"")
         
-        while true {
+        repeat {
             guard
                 let response_str = readLine(stripNewline: true)
                 where !response_str.isEmpty
@@ -23,17 +23,17 @@ class Utils {
             }
             
             return response_str
-        }
+        } while true
     }
     
-    func clearScreen() {
+    static func clearScreen() {
         print("")
         print("")
         print("")
         print("")
     }
     
-    func pause() {
+    static func pause() {
         readLine()
     }
 }
